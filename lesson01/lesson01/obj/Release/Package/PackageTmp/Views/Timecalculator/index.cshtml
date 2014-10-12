@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "index";
+}
+
+@using(Html.BeginForm( "calculate", "Timecalculator", FormMethod.Post))
+{
+    <h1>Calculate time</h1>
+    <p>
+ @Html.Label("Hours") <br />
+ @Html.TextBox("Hours")
+ </p>
+ <p>
+ @Html.Label("Minutes") <br />
+ @Html.TextBox("Minutes")
+ </p>
+ <p>
+ @Html.Label("Seconds") <br />
+ @Html.TextBox("Seconds")
+ </p>
+ <p>
+ <input type="submit" value="Calculatetime">
+ </p>
+    
+    
+}
+

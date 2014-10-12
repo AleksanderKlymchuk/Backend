@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table>
+    <thead>
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Address</td>
+            <td>Zip</td>
+            <td>City</td>
+        </tr>
+    </thead>
+
+
+</table>
+
+@foreach(var item in ViewBag.me)
+{
+    
+   <tr><td>@item.Firstname</td></tr> 
+    <tr><td>@item.Lastname</td></tr>
+    <tr><td>@item.Address</td></tr>
+    <tr><td>@item.Zip</td></tr>
+    <tr><td>@item.City</td></tr><br />
+      
+    
+ }
+
+
+

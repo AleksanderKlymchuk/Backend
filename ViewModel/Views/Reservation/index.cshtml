@@ -1,0 +1,97 @@
+﻿@model ViewModel.ViewModels.Reservation
+@{
+    ViewBag.Title = "index";
+}
+
+<h2>Reservation</h2>
+
+@using (@Html.BeginForm("MakeReservation","Reservation"))
+{ 
+     @Html.ValidationSummary(true)
+    <hr />
+    <h3>Customer Information</h3>
+     <div>
+       @Html.LabelFor(m => m.Customer.FirstName)
+    </div>
+    <div>
+       @Html.EditorFor(m => m.Customer.FirstName)
+        @Html.ValidationMessageFor(m=>m.Customer.FirstName)
+    </div>
+    
+    
+        <div>
+           @Html.LabelFor(m => m.Customer.LastName)
+        </div>
+        <div>
+            @Html.EditorFor(m => m.Customer.LastName)
+            @Html.ValidationMessageFor(m => m.Customer.LastName)
+        </div>
+    @*
+    <div>
+    @Html.LabelFor(m => m.Customer.Address)
+    </div>
+        <div>
+            @Html.EditorFor(m => m.Customer.Address)
+        </div>
+    <div>
+    @Html.LabelFor(m => m.Customer.City)
+    </div>
+        <div>
+            @Html.EditorFor(m => m.Customer.City)
+        </div>
+    <div>
+        @Html.LabelFor(m => m.Customer.Zip)
+    </div>
+        <div>
+            @Html.EditorFor(m => m.Customer.Zip)
+        </div>
+    <div>
+        @Html.LabelFor(m => m.Customer.Email)
+
+    </div>
+        <div>
+            @Html.EditorFor(m => m.Customer.Email)
+        </div>
+    <div>
+    @Html.LabelFor(m => m.Customer.Phone)
+
+    </div>
+        <div>
+            @Html.EditorFor(m => m.Customer.Phone)
+        </div>
+        <hr />
+        <h3>Pet Information
+    </h3>
+
+        <div>
+            @Html.DropDownListFor(m => m.OrderItem.Spiece, new SelectList(@Model.OrderItem.Pricelist, "Key", "Key"),"Select specie")
+        </div>
+        <br />
+        <div>
+            @Html.LabelFor(m=>m.OrderItem.Petname)
+            &nbsp; @Html.EditorFor(m=>m.OrderItem.Petname)
+        </div>
+        <br />
+        <div>
+            @Html.LabelFor(m=>m.OrderItem.Arrival)
+            &nbsp;&nbsp;&nbsp;&nbsp;  @Html.EditorFor(m=>m.OrderItem.Arrival)
+        </div>
+        <br />
+        <div>
+            @Html.LabelFor(m=>m.OrderItem.Departure)
+            @Html.EditorFor(m=>m.OrderItem.Departure)
+        </div>
+        <br />
+*@
+    <div>
+        <input type="submit" value="Make Reservation" />
+    </div>
+    
+    
+}
+
+
+
+
+
+

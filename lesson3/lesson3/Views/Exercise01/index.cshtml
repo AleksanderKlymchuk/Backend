@@ -1,0 +1,23 @@
+﻿@using lesson3.Models
+@{
+    ViewBag.Title = "index";
+}
+
+<h2>index</h2>
+
+ @foreach (var item in @ViewBag.prod)
+ {
+     @item.Isbn
+    if (item is Book)
+    {
+        
+        <p>@item.Isbn</p>
+    }   
+    else if (item is MusicCD)
+    {
+        
+        <p>@item.Title</p>
+    } 
+ }
+   
+

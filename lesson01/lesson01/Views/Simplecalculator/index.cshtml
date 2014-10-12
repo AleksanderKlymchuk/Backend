@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "index";
+}
+
+<h2>Simple Calculator</h2>
+
+@using(@Html.BeginForm("index","Simplecalculator",FormMethod.Post))
+{
+<p>
+
+    @Html.TextBox("firstvalue")
+
+</p>
+<p>
+    @Html.TextBox("secondvalue")
+
+</p>
+  <p>
+
+      <input type="submit" name="operator" value="+" />
+      <input type="submit" name="operator" value="-" />
+      <input type="submit" name="operator" value="*" />
+      <input type="submit" name="operator" value="/" />
+
+  </p>
+    <p>
+
+        @ViewBag.test
+    </p>
+}

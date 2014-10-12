@@ -1,0 +1,233 @@
+﻿@{
+    ViewBag.Title = "dice";
+}
+<style type="text/css">
+    a.mybutton {
+       
+       
+        display: block;
+        width: 59px;
+        height: 59px;
+        text-indent: -9999px; /* hides the link text */
+    }
+    ul{
+
+        list-style-type:none;
+
+    }
+    #frame
+    {
+        
+        
+    }
+    #left{width:35%;
+          float:left;
+          border:solid;
+          border-color:black;
+          text-align:center;
+          margin: 5%;
+    }
+    #right {
+        width: 35%;
+        float: right;
+        border: solid;
+        border-color: black;
+        margin:5%;
+    }
+    #im3 {
+        top: 10%;
+        margin-left: auto;
+        margin-right: auto;
+        background-image: url('../Content/Images/dice6.png');
+    }
+    #im1 {
+        visibility: hidden;
+        margin: 5%;
+        margin-left: auto;
+        margin-right: auto;
+        background-image: url('../Content/Images/dice6.png');
+    }
+    #im2 {
+        visibility: hidden;
+        float: right;
+        margin: 5%;
+        margin-right: 30%;
+        background-image: url('../Content/Images/dice6.png');
+    }
+    
+
+
+</style>
+<script>
+    window.onload=function()
+    {
+        
+        if (localStorage.getItem("Session") == "Created") {
+
+            document.getElementById('im2').style.visibility = 'visible';
+            document.getElementById('im1').style.marginLeft = '30%';
+            document.getElementById('im1').style.cssFloat = 'left';
+            document.getElementById('im2').style.visibility = 'visible';
+            document.getElementById('im1').style.visibility = 'visible';
+            document.getElementById('im3').style.visibility = 'hidden';
+            document.getElementById('end').style.visibility = 'visible';
+            document.getElementById('end').style.visibility = 'visible';
+            document.getElementById('twoR').style.visibility = 'hidden';
+            changeImg();
+        }
+       
+      
+       
+    }
+    function changeImg()
+    {
+            var a = null;
+            var b = null;
+            a = '@Html.ViewBag.outcome1'
+            b = '@Html.ViewBag.outcome2'
+
+            if (a != null && b != null) {
+
+                document.getElementById('im1').style.backgroundImage = 'url(../Content/Images/dice' + a + '.png)';
+                document.getElementById('im2').style.backgroundImage = 'url(../Content/Images/dice' + b + '.png)';
+            }
+    }
+    
+    function oneImg()
+    {
+        var c = null;
+        c = '@Html.ViewBag.outcome'
+        if (c!=null)
+        {
+
+            document.getElementById('im3').style.backgroundImage = 'url(../Content/Images/dice' + c + '.png)';
+
+        }
+
+
+
+    }
+    function getsecondRoll()
+    {
+        
+        document.getElementById('im1').style.cssFloat = 'left';
+        document.getElementById('im1').style.marginLeft = '30%';
+        document.getElementById('im2').style.visibility = 'visible';
+        document.getElementById('im1').style.visibility = 'visible';
+        document.getElementById('im3').style.visibility = 'hidden';
+        document.getElementById('im1').style.backgroundImage = 'url(../Content/Images/dice6.png)';
+        document.getElementById('im2').style.backgroundImage = 'url(../Content/Images/dice6.png)';
+        localStorage.setItem("Session", "Created");
+
+        document.getElementById('end').style.visibility = 'visible';
+        document.getElementById('twoR').style.visibility = 'hidden';
+      
+
+      
+        }
+    
+    function removeRoll()
+    {
+        document.getElementById('im1').style.visibility = 'hidden';
+        document.getElementById('im2').style.visibility = 'hidden';
+        localStorage.setItem("Session", "NotCreated");
+        document.getElementById('im3').style.visibility = 'visible';
+         document.getElementById('im3').style.backgroundImage = 'url(../Content/Images/dice6.png)';
+        //window.location.reload("index");
+        document.getElementById('end').style.visibility = 'hidden';
+        document.getElementById('twoR').style.visibility = 'visible';
+      
+    }
+    function end() {
+        localStorage.setItem("Session", "NotCreated");
+    }
+    
+  
+</script>
+
+<div id="frame">
+    <div id="left">
+        <h1>DiceRoller</h1>
+      <font size="1"></font><button id="twoR" style="background-color:transparent; color:red;" onclick="getsecondRoll()" name="" value="+">+</button>
+      <font size="1"></font> <button id="end" style="background-color:transparent;color:red; visibility:hidden;" onclick="removeRoll()" name="" value="-">X</button>
+       
+        
+      
+
+         @using (@Html.BeginForm("Roll", "Dice", FormMethod.Get))
+        {
+            
+            <p>
+                The outcome is @Html.ViewBag.outcome @Html.ViewBag.outcome1-@Html.ViewBag.outcome2
+            </p>
+            <p>
+                The dice has been thrown @Html.ViewBag.numroll times @Html.ViewBag.numroll1
+            </p>
+            <p>
+                The total score is @Html.ViewBag.totalsum  @Html.ViewBag.totalsum1  
+            </p>
+            <p>
+                The avarage score is @Html.ViewBag.evaragescore  @Html.ViewBag.evaragescore1
+            </p>
+             @Html.ActionLink("dice1", "TwoRoll", null, new { @class = "mybutton", @id = "im2" })
+             @Html.ActionLink("dice2", "TwoRoll", null, new { @class = "mybutton",@id="im1" })
+             @Html.ActionLink("dice", "Roll", null, new { @class = "mybutton", @id = "im3" })}
+           
+          
+           
+    </div>
+
+    <div id="right">
+        <p id="result"></p>
+        <p>
+            There has been thrown is:
+
+
+            @{
+                int a = 0;
+                int i = 0;
+                int b=0;
+                if (ViewBag.distribution!=null)
+                { 
+                foreach (var item in ViewBag.distribution)
+                {
+                    i++;
+                 
+                    <ul>
+            
+                        <li>
+                            @item :@i
+                        </li>
+                    </ul> }
+                          }
+                          else if (ViewBag.distribution1!=null & ViewBag.distribution2!=null)
+                {
+                              <p>Roll1</p>
+                          foreach (var item1 in ViewBag.distribution1)
+                {
+                    a++;
+                    <ul>
+            
+                        <li>
+                            @item1 :@a
+                        </li>
+                    </ul> }     
+                              <p>Roll2</p>
+                               foreach (var item2 in ViewBag.distribution2)
+                {
+                    b++;
+                    <ul>
+                        <li>
+                            @item2 :@b
+                        </li>
+                    </ul> }
+                }
+
+            }
+
+      
+
+    </div>
+
+
+</div>

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<string>
+
+
+<div class="navbar-header">
+    <ul class="nav navbar-nav">
+        @foreach (string movie in Model)
+        {
+
+            <li>@Html.ActionLink(@movie,"index",@movie)</li>
+
+        }
+
+      
+    </ul>
+
+</div>

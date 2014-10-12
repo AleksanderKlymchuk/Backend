@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Bands</h2>
+<div>
+    <h1>RockBands</h1>
+    <ol>
+        @{
+            foreach (var item in ViewBag.Rockbands)
+
+            { 
+               <li>@item</li>
+            }
+              }
+     
+    </ol>
+
+
+</div>
+

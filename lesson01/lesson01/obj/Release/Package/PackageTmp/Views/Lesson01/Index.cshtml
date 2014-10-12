@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Student</h2>
+<div>
+   <table>
+       <tr>
+           <td>Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+           <td>Age:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+           <td>Birthday:</td>
+       </tr>
+       <tr>
+           <td>@ViewBag.name</td>
+           <td>@ViewBag.age</td>
+           <td>@ViewBag.birthday</td>
+       </tr>
+       
+   </table>
+
+</div>
+<div>
+    <h3>Exercises:</h3>
+    <ol>
+        <li>@Html.ActionLink("Exerciese2-Create Rock bands", "index", "Rockbands")  </li>
+        <li>@Html.ActionLink("Exerciese3-Create Time Calculator", "index", "Timecalculator")  </li>
+        <li>@Html.ActionLink("Exerciese4-Create Simple Calculator", "index", "Simplecalculator")  </li>
+    </ol>
+    
+   
+
+   
+
+</div>

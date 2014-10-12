@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@Html.ActionLink("Home", "Index", "Home")
+
+<h2>@ViewBag.Glass.Name</h2>
+<p>Price: @String.Format("{0:0.00}", ViewBag.Glass.Price)</p>
+<p><img src="/content/images/@ViewBag.Glass.ImageUrl" alt="@ViewBag.Glass.Name" /></p>
+<p>Manufacture: @ViewBag.Glass.Manufacturer</p>
+<h2>@ViewBag.Knife.Name</h2>
+<p>Price: @String.Format("{0:0.00}", ViewBag.Knife.Price)</p>
+<p>Manufacture:  @ViewBag.Knife.Manufacturer</p>
+<h2>@ViewBag.Bin.Name</h2>
+<p>Price: @String.Format("{0:0.00}", ViewBag.Bin.Price)</p>
+<p>Manufacture:  @ViewBag.Bin.Manufacturer</p>
